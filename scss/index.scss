@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+
+:root {
+  --Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+  --Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+  --Grayish-Blue: hsl(212, 23%, 69%);
+  --Light-Grayish-Blue: hsl(210, 46%, 95%);
+  --font: "Manrope";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font);
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 400px;
+  min-width: 350px;
+  width: 100%;
+  margin-top: 50px;
+  box-shadow: 10px 12px 18px rgba($color: #000000, $alpha: 0.1);
+}
+
+.img {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  object-fit: cover;
+  background-color: rgba($color: #000000, $alpha: 0.1);
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.content {
+  width: 100%;
+  padding: 40px 30px 20px;
+
+  .title {
+    color: var(--Very-Dark-Grayish-Blue);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  .text {
+    color: var(--Desaturated-Dark-Blue);
+    font-size: 15px;
+  }
+
+  .personal-info {
+    margin-top: 60px;
+    height: 40px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 0.5fr;
+    align-items: center;
+
+    .img-perfil {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+    .info {
+      margin-top: 5px;
+      justify-self: flex-start;
+      height: 100%;
+
+      .name {
+        color: var(--Very-Dark-Grayish-Blue);
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .date {
+        color: var(--Desaturated-Dark-Blue);
+        font-size: 15px;
+      }
+    }
+    .share {
+      &-icon {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--Light-Grayish-Blue);
+        cursor: pointer;
+      }
+      .hidden {
+        opacity: 0;
+        position: absolute;
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 0.5fr 2fr 0.5fr;
+        align-items: center;
+        padding: 0 30px;
+        left: 0;
+        bottom: 0%;
+        width: 100%;
+        height: 71px;
+        background-color: var(--Very-Dark-Grayish-Blue);
+        transform: translateY(71px);
+        transition: all 0.5s ease-in-out;
+
+        span {
+          cursor: pointer;
+        }
+
+        &-share {
+          color: var(--Light-Grayish-Blue);
+          text-transform: uppercase;
+          font-size: 15px;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
+}
+
+.share-action:hover + .hidden,
+.hidden:hover {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.attribution {
+  margin: 30px;
+  text-align: center;
+}
+
+@media (min-width: 816px) {
+  .container {
+    flex-direction: row;
+    max-width: 900px;
+    height: 300px;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .img {
+    overflow: hidden;
+    border-radius: 10px 0 0 10px;
+    width: 45%;
+    height: auto;
+    object-fit: fill;
+  }
+  .content {
+    width: 55%;
+    padding: 30px 40px;
+
+    .title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .personal-info {
+      margin-top: 30px;
+
+      .share {
+        position: relative;
+
+        .hidden {
+          display: flex;
+          justify-content: space-between;
+          left: 50%;
+          width: 200px;
+          height: 40px;
+          border-radius: 10px;
+          color: var(--Light-Grayish-Blue);
+          font-size: 14px;
+          transform: translate(-50%, -40px);
+
+          &:after {
+            position: absolute;
+            content: "";
+            width: 15px;
+            height: 15px;
+            background-color: var(--Very-Dark-Grayish-Blue);
+            left: 49%;
+            top: 100%;
+            z-index: -1;
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          .share-icon {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .share-action:hover + .hidden,
+  .hidden:hover {
+    opacity: 1 !important;
+    transform: translate(-50%, -60px) !important;
+  }
+}
